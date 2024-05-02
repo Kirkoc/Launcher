@@ -36,12 +36,22 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run dist
         shell: bash
-
-      - name: Upload Build Artifacts
+      
+      # Upload artifacts with OS specific names
+      - name: Upload Build Artifacts - macOS
         uses: actions/upload-artifact@v4
         with:
-          name: launcher-builds-artifacts
-          path: |
-            ./dist/*.exe
-            ./dist/*.dmg
-            ./dist/*.AppImage
+          name: electron-builds-macos
+          path: ./dist/*.dmg
+
+      - name: Upload Build Artifacts - Ubuntu
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-builds-linux
+          path: ./dist/*.AppImage
+
+      - name: Upload Build Artifacts - Windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-builds-windows
+          path: ./dist/*.exe
