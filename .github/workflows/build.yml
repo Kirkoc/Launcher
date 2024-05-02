@@ -39,18 +39,21 @@ jobs:
       
       # Upload artifacts with OS specific names
       - name: Upload Build Artifacts - macOS
+        if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
           name: electron-builds-macos
           path: ./dist/*.dmg
 
       - name: Upload Build Artifacts - Ubuntu
+        if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
         with:
           name: electron-builds-linux
           path: ./dist/*.AppImage
 
       - name: Upload Build Artifacts - Windows
+        if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
         with:
           name: electron-builds-windows
