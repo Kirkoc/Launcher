@@ -40,7 +40,7 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: electron-builds
+          name: launcher-builds-artifacts
           path: |
             ./dist/*.exe
             ./dist/*.dmg
