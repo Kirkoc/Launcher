@@ -36,3 +36,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run dist
         shell: bash
+
+      - name: Upload Build Artifacts (Optional)
+        uses: actions/upload-artifact@v3
+        with:
+          name: electron-builds
+          path: ./dist
